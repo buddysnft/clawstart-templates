@@ -43,23 +43,23 @@ These templates provide a starting point for configuring your OpenClaw workspace
 **Option 1: Manual Customization**
 
 1. Clone this repo:
-   ```bash
-   git clone https://github.com/YOUR-USERNAME/clawstart-templates.git
+```bash
+   git clone https://github.com/buddysnft/clawstart-templates.git
    cd clawstart-templates
-   ```
+```
 
 2. Copy templates to your workspace:
-   ```bash
+```bash
    cp templates/*.template ~/.openclaw/workspace/
-   ```
+```
 
 3. Fill in variables (see `docs/VARIABLES.md`)
 
 4. Rename files (remove `.template` extension):
-   ```bash
+```bash
    cd ~/.openclaw/workspace
    for f in *.template; do mv "$f" "${f%.template}"; done
-   ```
+```
 
 5. Review and customize each file
 
@@ -84,14 +84,6 @@ All templates use `{{VARIABLE}}` syntax. Common variables:
 - `{{INTEGRATIONS}}` - Telegram, Slack, GitHub, etc.
 
 See `docs/VARIABLES.md` for complete list.
-
-## Example Configurations
-
-Check `examples/` for pre-filled configurations:
-
-- **personal-assistant/** - Email, calendar, daily briefings
-- **business-ops/** - Multi-bot coordination, project tracking
-- **developer/** - GitHub integration, code review workflows
 
 ## Contributing
 
@@ -126,7 +118,7 @@ You're free to:
 
 ## Credits
 
-Created by ClawStart to solve the OpenClaw onboarding problem. Inspired by the OpenClaw community and built with feedback from OpenClaw creator Peter Steinberger.
+Created by ClawStart to solve the OpenClaw onboarding problem. Inspired by the OpenClaw community.
 
 ## Related Links
 
