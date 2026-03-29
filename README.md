@@ -1,196 +1,140 @@
-# Your ClawStart Workspace - Quick Start Guide
+# ClawStart Templates
 
-**Welcome!** Your custom OpenClaw workspace is ready to install.
+Open-source workspace templates for [OpenClaw](https://openclaw.com) - the personal AI assistant platform.
 
----
+## What This Is
 
-## What You Got
+These templates provide a starting point for configuring your OpenClaw workspace. They include:
 
-**7 Core Files** (pre-configured for you):
-- `SOUL.md` - Your AI's personality
-- `AGENTS.md` - Core operating rules
-- `USER.md` - Your profile
-- `IDENTITY.md` - Bot role definition
-- `TOOLS.md` - Integration notes
-- `HEARTBEAT.md` - Proactive check schedule
-- `MEMORY.md` - Long-term memory structure
+- **SOUL.md** - AI personality and voice
+- **AGENTS.md** - Core operating rules
+- **USER.md** - Your profile and preferences
+- **IDENTITY.md** - Bot role definition
+- **TOOLS.md** - Integration setup notes
+- **HEARTBEAT.md** - Proactive check schedule
+- **MEMORY.md** - Long-term memory structure
 
-**Plus:**
-- Folder structure (`memory/`, `projects/`, `scripts/`)
-- Setup script (one command install)
-- This guide
+## ⚠️ Security First
 
----
+**Before using these templates:**
 
-## Installation (2 Minutes)
+1. **Review all files** - These are configuration files that control AI behavior. Read them before installing.
+2. **Keep OpenClaw local** - Never expose port 18789 to the internet. Use `gateway.bind: "loopback"` (default).
+3. **Use DM pairing** - Set `dmPolicy: "pairing"` for all messaging channels. Never use `dmPolicy: "open"`.
+4. **Follow OpenClaw security guidance** - https://docs.openclaw.ai/gateway/security
+5. **Run security audit** - After setup: `openclaw security audit`
+
+**OpenClaw is a personal assistant trust model:**
+- One trusted user per installation
+- NOT designed for multiple untrusted users
+- Runs with YOUR user permissions
+- Can execute shell commands and access files
+
+## Quick Start
 
 ### Prerequisites
 
-1. **OpenClaw must be installed first**
-   - Visit: https://openclaw.com/install
-   - Follow installation guide
-   - Verify: `openclaw --version`
+- OpenClaw installed (https://openclaw.com/install)
+- macOS 12+ or Linux
+- Basic understanding of YAML/Markdown
 
-2. **Mac Mini or MacOS machine**
-   - This workspace is optimized for Mac
+### Using These Templates
 
-### Install Your Workspace
+**Option 1: Manual Customization**
 
-**Option A: Automatic (Recommended)**
+1. Clone this repo:
+   ```bash
+   git clone https://github.com/YOUR-USERNAME/clawstart-templates.git
+   cd clawstart-templates
+   ```
 
-```bash
-# Download and run setup script
-bash setup.sh
-```
+2. Copy templates to your workspace:
+   ```bash
+   cp templates/*.template ~/.openclaw/workspace/
+   ```
 
-The script will:
-- Backup your existing workspace (if any)
-- Extract your custom files
-- Set permissions
-- Restart OpenClaw gateway
-- Done!
+3. Fill in variables (see `docs/VARIABLES.md`)
 
-**Option B: Manual**
+4. Rename files (remove `.template` extension):
+   ```bash
+   cd ~/.openclaw/workspace
+   for f in *.template; do mv "$f" "${f%.template}"; done
+   ```
 
-```bash
-# 1. Backup existing workspace (if you have one)
-mv ~/.openclaw/workspace ~/.openclaw/workspace.backup
+5. Review and customize each file
 
-# 2. Extract your workspace
-tar -xzf workspace-bundle.tar.gz -C ~/.openclaw/
+6. Restart OpenClaw: `openclaw gateway restart`
 
-# 3. Set permissions
-chmod +x ~/.openclaw/workspace/scripts/*.sh
+**Option 2: Use ClawStart Service**
 
-# 4. Restart gateway
-openclaw gateway restart
-```
+If you want help with customization: https://clawstart.net
 
----
+- We fill in all variables based on a survey
+- We provide installation support
+- Templates are still open source (you're just paying for implementation)
 
-## First Steps
+## Template Variables
 
-### 1. Test Your AI
+All templates use `{{VARIABLE}}` syntax. Common variables:
 
-Send a message via your configured platform ({{MESSAGING_PRIMARY}}):
+- `{{USER_NAME}}` - Your full name
+- `{{BOT_NAME}}` - What to call your AI
+- `{{PERSONALITY}}` - Direct/Warm/Technical/Casual
+- `{{USE_CASES}}` - Email, Calendar, Coding, etc.
+- `{{INTEGRATIONS}}` - Telegram, Slack, GitHub, etc.
 
-```
-Hi! Tell me about yourself.
-```
+See `docs/VARIABLES.md` for complete list.
 
-Your AI should respond in the personality you chose.
+## Example Configurations
 
-### 2. Review Your Files
+Check `examples/` for pre-filled configurations:
 
-Open these files and customize if needed:
+- **personal-assistant/** - Email, calendar, daily briefings
+- **business-ops/** - Multi-bot coordination, project tracking
+- **developer/** - GitHub integration, code review workflows
 
-- `~/.openclaw/workspace/SOUL.md` - Tweak personality
-- `~/.openclaw/workspace/USER.md` - Update your info
-- `~/.openclaw/workspace/HEARTBEAT.md` - Adjust proactive checks
+## Contributing
 
-### 3. Add Integrations
+We welcome contributions! If you have:
 
-If you selected integrations (Telegram, email, calendar), follow setup guides in `TOOLS.md`.
+- Better template patterns
+- New personality archetypes
+- Integration guides
+- Security improvements
 
----
+Please open a PR or issue.
 
-## Common Tasks
+### Contribution to OpenClaw
 
-### Update Your AI's Personality
+These templates were created for the ClawStart service but are being open-sourced to help the OpenClaw community. We encourage upstream contribution of useful patterns to the OpenClaw project itself.
 
-```bash
-# Edit SOUL.md
-nano ~/.openclaw/workspace/SOUL.md
+## License
 
-# Restart gateway to reload
-openclaw gateway restart
-```
+MIT License - see `LICENSE` file
 
-### Check Daily Memory
+You're free to:
+- Use these templates commercially or personally
+- Modify them however you want
+- Distribute them
+- Build services on top of them
 
-```bash
-# View today's log
-cat ~/.openclaw/workspace/memory/$(date +%Y-%m-%d).md
-```
+## Support
 
-### Install Skills
+- **Issues/Questions:** Open a GitHub issue
+- **Security concerns:** See OpenClaw security docs first: https://docs.openclaw.ai/gateway/security
+- **ClawStart service:** https://clawstart.net (paid implementation/support)
 
-```bash
-# Example: Install weather skill
-openclaw skill install weather
+## Credits
 
-# List available skills
-openclaw skill list
-```
+Created by ClawStart to solve the OpenClaw onboarding problem. Inspired by the OpenClaw community and built with feedback from OpenClaw creator Peter Steinberger.
 
----
+## Related Links
 
-## Troubleshooting
-
-### AI not responding?
-
-```bash
-# Check gateway status
-openclaw gateway status
-
-# View logs
-tail -f ~/.openclaw/logs/gateway.log
-```
-
-### Files not loading?
-
-```bash
-# Verify file permissions
-ls -la ~/.openclaw/workspace/
-
-# Should show your files (SOUL.md, AGENTS.md, etc.)
-```
-
-### Need to restore backup?
-
-```bash
-# If you made a mistake, restore your old workspace
-mv ~/.openclaw/workspace ~/.openclaw/workspace.clawstart
-mv ~/.openclaw/workspace.backup ~/.openclaw/workspace
-openclaw gateway restart
-```
+- OpenClaw: https://openclaw.com
+- OpenClaw Docs: https://docs.openclaw.ai
+- OpenClaw Security: https://docs.openclaw.ai/gateway/security
+- ClawStart Service: https://clawstart.net
 
 ---
 
-## Getting Help
-
-**Email:** support@buddysautomations.com
-**Response time:** Within 24 hours (usually faster)
-
-**Include:**
-- Your order number
-- What you tried
-- Error messages (if any)
-- Screenshots help!
-
-**30-day support included.** We'll get you up and running.
-
----
-
-## Next Steps
-
-1. **Learn the basics** - Read `AGENTS.md` to understand how your AI works
-2. **Set up integrations** - Follow guides in `TOOLS.md`
-3. **Install skills** - Browse https://clawhub.ai for pre-built skills
-4. **Customize** - Make it yours! Edit files, adjust personality, add workflows
-
----
-
-## Pro Tips
-
-- **Your AI logs everything** to `memory/YYYY-MM-DD.md` - Review these to see what it's learning
-- **MEMORY.md grows over time** - Your AI updates it with important context
-- **Heartbeats are your friend** - Let your AI proactively check things (email, calendar, etc.)
-- **Back up regularly** - `tar -czf workspace-backup.tar.gz ~/.openclaw/workspace/`
-
----
-
-**You're all set!** Your AI is ready to work. Start simple, build up over time.
-
-— The ClawStart Team  
-Buddys Automations
+**Not affiliated with or endorsed by OpenClaw. These are community-created templates.**
