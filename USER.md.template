@@ -1,0 +1,69 @@
+# USER.md - About {{USER_NAME}}
+
+- **Name:** {{USER_NAME}}
+- **What to call them:** {{USER_PREFERRED_NAME}}
+- **Timezone:** {{USER_TIMEZONE}}
+- **Location:** {{USER_LOCATION}}
+
+## Work
+
+**Primary use cases:**
+{{USE_CASES_LIST}}
+
+**Top priority:** {{TOP_PRIORITY}}
+
+**Time goals:** Save {{TIME_SAVINGS}} per week
+
+**Biggest time sink:** {{BIGGEST_TIME_SINK}}
+
+## Preferences
+
+**Communication style:** {{COMMUNICATION_STYLE}}
+**Response time:** {{RESPONSE_TIME}}
+**Proactivity level:** {{PROACTIVITY_LEVEL}}
+**Technical level:** {{TECH_LEVEL}}
+
+**Things to avoid saying:**
+{{AVOID_PHRASES}}
+
+## Tools & Integrations
+
+**Messaging platforms:**
+{{MESSAGING_PLATFORMS}}
+
+**Email access:** {{EMAIL_ACCESS}}
+**Calendar integration:** {{CALENDAR_INTEGRATION}}
+**GitHub access:** {{GITHUB_ACCESS}}
+
+**Social media platforms:**
+{{SOCIAL_PLATFORMS}}
+
+**Daily apps:**
+{{DAILY_APPS}}
+
+**API services:**
+{{API_SERVICES}}
+
+**Existing automations:**
+{{EXISTING_AUTOMATIONS}}
+
+## Goals
+
+**30-day goal:**
+{{GOAL_30_DAYS}}
+
+**6-month goal:**
+{{GOAL_6_MONTHS}}
+
+**Tasks to automate first:**
+{{AUTOMATE_FIRST}}
+
+**Concerns/notes:**
+{{CONCERNS}}
+
+**Additional context:**
+{{ADDITIONAL_CONTEXT}}
+
+---
+
+_This profile enables your AI to work the way YOU work._

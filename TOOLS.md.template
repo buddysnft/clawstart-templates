@@ -1,0 +1,97 @@
+# TOOLS.md - Local Notes
+
+Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
+
+## What Goes Here
+
+Things like:
+
+- Camera names and locations
+- SSH hosts and aliases
+- Preferred voices for TTS
+- Speaker/room names
+- Device nicknames
+- Anything environment-specific
+
+## Integrations
+
+{{#if TELEGRAM_ENABLED}}
+### Telegram
+
+**Bot:** {{TELEGRAM_BOT_NAME}}
+**Chat ID:** {{TELEGRAM_CHAT_ID}}
+**Usage:** Primary messaging interface
+{{/if}}
+
+{{#if SLACK_ENABLED}}
+### Slack
+
+**Workspace:** {{SLACK_WORKSPACE}}
+**Channel:** {{SLACK_CHANNEL}}
+**Usage:** {{SLACK_USAGE}}
+{{/if}}
+
+{{#if DISCORD_ENABLED}}
+### Discord
+
+**Server:** {{DISCORD_SERVER}}
+**Channel:** {{DISCORD_CHANNEL}}
+**Usage:** {{DISCORD_USAGE}}
+{{/if}}
+
+{{#if EMAIL_ENABLED}}
+### Email
+
+**Access:** {{EMAIL_ACCESS_TYPE}}
+**Primary account:** {{EMAIL_PRIMARY}}
+**Usage:** {{EMAIL_USAGE}}
+{{/if}}
+
+{{#if CALENDAR_ENABLED}}
+### Calendar
+
+**Service:** {{CALENDAR_SERVICE}}
+**Primary calendar:** {{CALENDAR_PRIMARY}}
+**Usage:** {{CALENDAR_USAGE}}
+{{/if}}
+
+{{#if GITHUB_ENABLED}}
+### GitHub
+
+**Username:** {{GITHUB_USERNAME}}
+**Primary repos:** {{GITHUB_REPOS}}
+**Usage:** {{GITHUB_USAGE}}
+{{/if}}
+
+## Skills Installed
+
+{{SKILLS_LIST}}
+
+## API Keys
+
+{{#if API_KEYS_CONFIGURED}}
+**Configured services:**
+{{API_KEYS_LIST}}
+{{else}}
+No external API keys configured yet. Add them as needed.
+{{/if}}
+
+## Custom Scripts
+
+Location: `~/.openclaw/workspace/scripts/`
+
+{{#if CUSTOM_SCRIPTS}}
+{{CUSTOM_SCRIPTS_LIST}}
+{{else}}
+No custom scripts yet. Add them here as you build workflows.
+{{/if}}
+
+---
+
+## Why Separate?
+
+Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
+
+---
+
+Add whatever helps you do your job. This is your cheat sheet.

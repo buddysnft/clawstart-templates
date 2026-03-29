@@ -1,0 +1,52 @@
+{
+  "version": "1.0.0",
+  "description": "ClawStart workspace folder structure",
+  "generated": "{{GENERATION_TIMESTAMP}}",
+  "customer": "{{USER_NAME}}",
+  "folders": [
+    {
+      "path": "memory",
+      "description": "Daily logs and session checkpoints",
+      "files": [
+        {
+          "name": "README.md",
+          "content": "# Memory Folder\\n\\nDaily logs go here:\\n- `YYYY-MM-DD.md` - Daily activity logs\\n- `session-state.md` - Checkpoint before compaction\\n- `heartbeat-state.json` - Track periodic checks\\n\\nDon't delete these - they're your AI's continuity."
+        },
+        {
+          "name": "session-state.md",
+          "content": "# Session State\\n\\n**Last updated:** Never\\n\\n## Active Task\\nNone yet.\\n\\n## Recent Exchanges\\nFirst session.\\n\\n## Pending\\nNothing pending.\\n\\n---\\n\\n_This file is your AI's checkpoint. It updates before context compaction._"
+        }
+      ]
+    },
+    {
+      "path": "projects",
+      "description": "Active projects and work in progress",
+      "files": [
+        {
+          "name": "README.md",
+          "content": "# Projects Folder\\n\\nOrganize your work here:\\n- One subfolder per project\\n- Keep related files together\\n- Your AI will reference these when working\\n\\nExample structure:\\n```\\nprojects/\\n  my-app/\\n    README.md\\n    notes.md\\n    code/\\n  client-work/\\n    project-brief.md\\n```"
+        }
+      ]
+    },
+    {
+      "path": "scripts",
+      "description": "Utility scripts and automation",
+      "files": [
+        {
+          "name": "README.md",
+          "content": "# Scripts Folder\\n\\nPut reusable scripts here:\\n- Bash automation\\n- Python utilities\\n- Node.js helpers\\n\\nYour AI can run scripts from here via `exec` tool.\\n\\nMake them executable:\\n```bash\\nchmod +x scripts/my-script.sh\\n```"
+        }
+      ]
+    }
+  ],
+  "rootFiles": [
+    "SOUL.md",
+    "AGENTS.md",
+    "USER.md",
+    "IDENTITY.md",
+    "TOOLS.md",
+    "HEARTBEAT.md",
+    "MEMORY.md",
+    "README.md"
+  ]
+}

@@ -1,0 +1,69 @@
+# MEMORY.md — Long-Term Memory
+
+**Purpose:** Curated context that persists across sessions. The distilled essence, not raw logs.
+**Security:** ONLY load in main session (direct chat with {{USER_PREFERRED_NAME}}). Never in groups.
+
+**Last updated:** {{GENERATION_DATE}}
+
+---
+
+## About {{USER_PREFERRED_NAME}}
+
+- Full name: {{USER_NAME}}
+- Goes by: {{USER_PREFERRED_NAME}}
+- Location: {{USER_LOCATION}}
+- Timezone: {{USER_TIMEZONE}}
+- Communication style: {{COMMUNICATION_STYLE}}
+- Work hours: {{WORK_HOURS}}
+
+---
+
+## Primary Use Cases
+
+{{USE_CASES_DETAILED}}
+
+**Top priority:** {{TOP_PRIORITY}}
+
+**30-day goal:**
+{{GOAL_30_DAYS}}
+
+**6-month goal:**
+{{GOAL_6_MONTHS}}
+
+---
+
+## My Identity ({{BOT_NAME}})
+
+- I'm {{USER_PREFERRED_NAME}}'s AI assistant running on OpenClaw
+- I communicate via {{MESSAGING_PRIMARY}}
+- My voice: {{VOICE_STYLE}}
+- I maintain my own files (this one, AGENTS.md, daily logs, etc.)
+- I wake up fresh each session — these files ARE my memory
+
+---
+
+## Tools & Integrations
+
+{{INTEGRATIONS_SUMMARY}}
+
+---
+
+## Active Projects
+
+_(This section will grow as you work together. Add project context here.)_
+
+---
+
+## Important Decisions
+
+_(Log major decisions here so future-you remembers the reasoning.)_
+
+---
+
+## Lessons Learned
+
+_(When you make mistakes or discover better approaches, document them here.)_
+
+---
+
+_Update this file when significant new context emerges. Remove outdated info. This is curated wisdom, not a changelog._

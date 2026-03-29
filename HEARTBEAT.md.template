@@ -1,0 +1,136 @@
+# HEARTBEAT.md
+
+**Purpose:** Proactive daily checks and maintenance.
+
+---
+
+## Every 30 Minutes (Memory Hygiene)
+
+**Check:** Does `memory/YYYY-MM-DD.md` exist for today?
+
+**If NO and we've had meaningful conversation:**
+- Create it immediately
+- Log what's happened so far today
+- Don't wait for "end of session" — sessions can die without warning
+
+**If YES:**
+- Quick scan: anything from last 30 min that should be logged?
+- If yes, append it
+
+**Rule:** Context can compact at any time. Daily file = your insurance policy.
+
+---
+
+{{#if PROACTIVE_EMAIL_CHECKS}}
+## Email Monitoring
+
+**Check:** {{EMAIL_CHECK_FREQUENCY}}
+
+**What to look for:**
+- Urgent messages from key contacts
+- Meeting invitations
+- Important notifications
+
+**When to alert {{USER_PREFERRED_NAME}}:**
+- {{EMAIL_ALERT_CRITERIA}}
+
+**When to stay quiet:**
+- Routine newsletters, promotions
+- Low-priority threads
+- Already handled items
+{{/if}}
+
+{{#if PROACTIVE_CALENDAR_CHECKS}}
+## Calendar Monitoring
+
+**Check:** {{CALENDAR_CHECK_FREQUENCY}}
+
+**What to surface:**
+- Events in next 2 hours
+- Tomorrow's schedule (evening before)
+- Week-ahead view (Monday morning)
+
+**When to alert:**
+- Meeting starting soon (15 min warning)
+- Schedule conflicts
+- Missing meeting prep
+{{/if}}
+
+{{#if PROACTIVE_TASK_CHECKS}}
+## Task/Project Monitoring
+
+**Check:** {{TASK_CHECK_FREQUENCY}}
+
+**What to track:**
+- {{TASK_TRACKING_1}}
+- {{TASK_TRACKING_2}}
+- {{TASK_TRACKING_3}}
+
+**When to surface:**
+- Deadlines approaching
+- Blockers detected
+- Progress milestones hit
+{{/if}}
+
+---
+
+## Daily Briefing
+
+{{#if DAILY_BRIEFING_ENABLED}}
+**Time:** {{DAILY_BRIEFING_TIME}}
+
+**Include:**
+- Weather for {{USER_LOCATION}}
+- Today's calendar
+- Priority tasks
+- {{DAILY_BRIEFING_EXTRAS}}
+
+**Format:** {{DAILY_BRIEFING_FORMAT}}
+{{else}}
+Not configured. Enable in USER.md if desired.
+{{/if}}
+
+---
+
+## Proactive Work (No Permission Needed)
+
+- Read and organize memory files
+- Check on active projects
+- Update documentation
+- Review and update MEMORY.md (distill recent learnings)
+
+---
+
+## When to Reach Out vs Stay Quiet
+
+**Reach out when:**
+- Important information needs attention
+- Calendar event approaching (<2h)
+- Something you found that's actionable
+- It's been >8h since last check-in (if configured)
+
+**Stay quiet (HEARTBEAT_OK) when:**
+- {{QUIET_HOURS}} unless urgent
+- {{USER_PREFERRED_NAME}} is clearly busy
+- Nothing new since last check
+- You just checked <30 minutes ago
+
+---
+
+## Heartbeat vs Cron
+
+**Use heartbeat when:**
+- Multiple checks can batch together
+- You need conversational context
+- Timing can drift slightly
+
+**Use cron when:**
+- Exact timing matters ("9:00 AM sharp")
+- Task needs isolation
+- One-shot reminders
+
+See `PROTOCOLS.md` for full guidance.
+
+---
+
+_This file drives proactive checks. Adjust frequency and scope as you learn what helps vs annoys._

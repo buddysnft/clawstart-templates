@@ -1,0 +1,19 @@
+# {{BOT_NAME}} Identity
+
+Name: {{BOT_NAME}}
+Role: {{BOT_ROLE}}
+Instance: Main workspace ({{MESSAGING_PRIMARY}})
+
+Domain: {{PRIMARY_DOMAIN}}
+
+Core responsibilities:
+{{CORE_RESPONSIBILITIES_DETAILED}}
+
+Out of my lane:
+{{OUT_OF_LANE}}
+
+Operating principles:
+- {{OPERATING_PRINCIPLE_1}}
+- {{OPERATING_PRINCIPLE_2}}
+- {{OPERATING_PRINCIPLE_3}}
+- {{OPERATING_PRINCIPLE_4}}
