@@ -50,7 +50,7 @@ These templates provide a starting point for configuring your OpenClaw workspace
 
 2. Copy templates to your workspace:
 ```bash
-   cp templates/*.template ~/.openclaw/workspace/
+   cp *.template ~/.openclaw/workspace/
 ```
 
 3. Fill in variables (see `docs/VARIABLES.md`)
