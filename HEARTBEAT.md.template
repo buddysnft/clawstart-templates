@@ -1,136 +1,187 @@
 # HEARTBEAT.md
 
-**Purpose:** Proactive daily checks and maintenance.
+**Purpose:** Proactive checks, memory hygiene, and system maintenance.
 
 ---
 
-## Every 30 Minutes (Memory Hygiene)
+## Every Heartbeat — First Check (Memory Hygiene)
 
-**Check:** Does `memory/YYYY-MM-DD.md` exist for today?
+**Before anything else, every single heartbeat:**
 
-**If NO and we've had meaningful conversation:**
+Does `memory/YYYY-MM-DD.md` exist for today?
+
+**If NO and there has been meaningful conversation:**
 - Create it immediately
-- Log what's happened so far today
-- Don't wait for "end of session" — sessions can die without warning
+- Log what has happened so far today
+- Do not wait for end of session — sessions can die without warning
 
 **If YES:**
-- Quick scan: anything from last 30 min that should be logged?
-- If yes, append it
+- Quick scan: anything from the last 30 minutes that should be logged?
+- If yes, append it now
 
-**Rule:** Context can compact at any time. Daily file = your insurance policy.
+**Rule:** Context can compact at any time. The daily file is your insurance policy. Write to it as you go, not at the end.
+
+---
+
+## Every 30 Minutes
+
+### API Budget Check
+- Are we approaching the ${{DAILY_BUDGET_LIMIT}} daily limit?
+- If cumulative spend across all bots exceeds 75% of limit → alert {{USER_PREFERRED_NAME}} now, don't wait for the hard stop
+- If limit is hit → stop all operations immediately, alert, wait for approval
+
+### Active Task Check
+- Is there an active long-running task?
+- If yes → log progress to daily memory file
+- If stuck or errored → report to {{USER_PREFERRED_NAME}} immediately, do not retry endlessly
 
 ---
 
 {{#if PROACTIVE_EMAIL_CHECKS}}
 ## Email Monitoring
+**Frequency:** {{EMAIL_CHECK_FREQUENCY}}
 
-**Check:** {{EMAIL_CHECK_FREQUENCY}}
-
-**What to look for:**
+**Check for:**
 - Urgent messages from key contacts
-- Meeting invitations
-- Important notifications
+- Time-sensitive requests
+- Anything requiring same-day response
 
-**When to alert {{USER_PREFERRED_NAME}}:**
+**Alert {{USER_PREFERRED_NAME}} when:**
 - {{EMAIL_ALERT_CRITERIA}}
 
-**When to stay quiet:**
-- Routine newsletters, promotions
-- Low-priority threads
+**Stay silent when:**
+- Newsletters, promotions, low-priority threads
 - Already handled items
-{{/if}}
+- Nothing actionable
 
-{{#if PROACTIVE_CALENDAR_CHECKS}}
-## Calendar Monitoring
-
-**Check:** {{CALENDAR_CHECK_FREQUENCY}}
-
-**What to surface:**
-- Events in next 2 hours
-- Tomorrow's schedule (evening before)
-- Week-ahead view (Monday morning)
-
-**When to alert:**
-- Meeting starting soon (15 min warning)
-- Schedule conflicts
-- Missing meeting prep
-{{/if}}
-
-{{#if PROACTIVE_TASK_CHECKS}}
-## Task/Project Monitoring
-
-**Check:** {{TASK_CHECK_FREQUENCY}}
-
-**What to track:**
-- {{TASK_TRACKING_1}}
-- {{TASK_TRACKING_2}}
-- {{TASK_TRACKING_3}}
-
-**When to surface:**
-- Deadlines approaching
-- Blockers detected
-- Progress milestones hit
+**Rule:** Silence = nothing urgent. Only reach out when there is something actionable.
 {{/if}}
 
 ---
 
-## Daily Briefing
+{{#if PROACTIVE_CALENDAR_CHECKS}}
+## Calendar Monitoring
+**Frequency:** {{CALENDAR_CHECK_FREQUENCY}}
+
+**Surface:**
+- Events starting within 2 hours
+- Tomorrow's schedule (surface the evening before)
+- Conflicts or double-bookings
+
+**Alert when:**
+- Meeting starting in 15 minutes with no prep done
+- Schedule conflict detected
+- Important event added or changed
+{{/if}}
+
+---
+
+{{#if PROACTIVE_TASK_CHECKS}}
+## Task & Project Monitoring
+**Frequency:** {{TASK_CHECK_FREQUENCY}}
+
+**Track:**
+- {{TASK_TRACKING_1}}
+- {{TASK_TRACKING_2}}
+- {{TASK_TRACKING_3}}
+
+**Alert when:**
+- Deadline approaching with no progress
+- Blocker detected
+- External dependency overdue
+{{/if}}
+
+---
 
 {{#if DAILY_BRIEFING_ENABLED}}
+## Daily Briefing
 **Time:** {{DAILY_BRIEFING_TIME}}
 
 **Include:**
 - Weather for {{USER_LOCATION}}
 - Today's calendar
-- Priority tasks
+- Priority tasks and open loops
 - {{DAILY_BRIEFING_EXTRAS}}
 
 **Format:** {{DAILY_BRIEFING_FORMAT}}
-{{else}}
-Not configured. Enable in USER.md if desired.
+
+**Rule:** Send this once. Do not resend unless asked.
 {{/if}}
+
+---
+
+## Weekly Check (Monday Morning)
+
+- Review last week's daily memory files
+- Update MEMORY.md with anything worth keeping long-term
+- Surface any unresolved blockers or open loops to {{USER_PREFERRED_NAME}}
+- Flag cross-domain dependencies that need attention
+
+---
+
+## Incident Response
+
+### On Any 429 Rate Limit
+- Stop the current operation immediately
+- Log to daily memory file with timestamp
+- Alert {{USER_PREFERRED_NAME}}
+- Do not retry — wait for explicit instructions
+
+### On Budget Limit Hit
+- Stop all operations immediately
+- Alert {{USER_PREFERRED_NAME}} directly
+- Do not resume until explicit approval received
+- Log the incident with full context
+
+### On Any Critical Event
+- Log to daily memory file immediately
+- Alert {{USER_PREFERRED_NAME}} if action is needed
+- Do not wait for the next scheduled check
 
 ---
 
 ## Proactive Work (No Permission Needed)
 
-- Read and organize memory files
-- Check on active projects
-- Update documentation
-- Review and update MEMORY.md (distill recent learnings)
+Between checks, use idle time for:
+- Reading and organizing memory files
+- Updating documentation with recent learnings
+- Reviewing active project status
+- Distilling daily logs into MEMORY.md
+
+**Rule:** Heartbeat time is not downtime. If there is useful internal work to do, do it.
 
 ---
 
-## When to Reach Out vs Stay Quiet
+## When to Reach Out vs Stay Silent
 
 **Reach out when:**
-- Important information needs attention
-- Calendar event approaching (<2h)
-- Something you found that's actionable
-- It's been >8h since last check-in (if configured)
+- Something is broken or errored
+- Budget threshold approaching or hit
+- Time-sensitive event detected
+- {{USER_PREFERRED_NAME}} asked for a specific alert
+- There is something genuinely actionable
 
-**Stay quiet (HEARTBEAT_OK) when:**
+**Stay silent when:**
+- Nothing has changed since last check
+- Routine checks came back clean
 - {{QUIET_HOURS}} unless urgent
-- {{USER_PREFERRED_NAME}} is clearly busy
-- Nothing new since last check
-- You just checked <30 minutes ago
+
+**Silence = everything working.** Do not send "nothing to report" messages. A clean heartbeat is a silent heartbeat.
 
 ---
 
 ## Heartbeat vs Cron
 
-**Use heartbeat when:**
-- Multiple checks can batch together
-- You need conversational context
-- Timing can drift slightly
+**Use heartbeat for:**
+- Checks that can batch together
+- Tasks needing conversational context
+- Monitoring where timing can drift slightly
 
-**Use cron when:**
-- Exact timing matters ("9:00 AM sharp")
-- Task needs isolation
-- One-shot reminders
-
-See `PROTOCOLS.md` for full guidance.
+**Use cron for:**
+- Exact timing required ("9:00 AM sharp")
+- Tasks that need full isolation
+- One-shot reminders with hard deadlines
 
 ---
 
-_This file drives proactive checks. Adjust frequency and scope as you learn what helps vs annoys._
+_This file drives proactive system behavior. The best heartbeat config is one that surfaces what matters and stays quiet about everything else._
