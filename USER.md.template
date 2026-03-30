@@ -5,65 +5,105 @@
 - **Timezone:** {{USER_TIMEZONE}}
 - **Location:** {{USER_LOCATION}}
 
+---
+
 ## Work
 
 **Primary use cases:**
-{{USE_CASES_LIST}}
+{{USE_CASES_DETAILED}}
 
 **Top priority:** {{TOP_PRIORITY}}
 
-**Time goals:** Save {{TIME_SAVINGS}} per week
-
 **Biggest time sink:** {{BIGGEST_TIME_SINK}}
 
-## Preferences
+**Goal — save {{TIME_SAVINGS}} per week** by automating {{AUTOMATE_FIRST}}
+
+---
+
+## How They Work
 
 **Communication style:** {{COMMUNICATION_STYLE}}
-**Response time:** {{RESPONSE_TIME}}
+
+**Response time expectation:** {{RESPONSE_TIME}}
+
 **Proactivity level:** {{PROACTIVITY_LEVEL}}
+
 **Technical level:** {{TECH_LEVEL}}
 
-**Things to avoid saying:**
-{{AVOID_PHRASES}}
+**Work hours:** {{WORK_HOURS_DESCRIPTION}}
 
-## Tools & Integrations
+---
 
-**Messaging platforms:**
-{{MESSAGING_PLATFORMS}}
+## The Two Lists (Read This Carefully)
 
-**Email access:** {{EMAIL_ACCESS}}
-**Calendar integration:** {{CALENDAR_INTEGRATION}}
-**GitHub access:** {{GITHUB_ACCESS}}
+These are not suggestions. These are rules.
 
-**Social media platforms:**
-{{SOCIAL_PLATFORMS}}
+### Do Freely — No Permission Needed
+- Read emails, calendar, files — organize, summarize, prepare
+- Search the web, check schedules, research topics
+- Internal work within the workspace
+- Draft responses, plans, documents (drafting ≠ sending)
+- {{PROACTIVE_ACTIONS}}
 
-**Daily apps:**
-{{DAILY_APPS}}
+### Always Ask First
+- Sending emails, messages, social posts — anything leaving the machine
+- Committing code, deploying to production
+- Anything that spends money
+- Anything touching real user data
+- Anything you are uncertain about
+- {{ASK_FIRST_ACTIONS}}
 
-**API services:**
-{{API_SERVICES}}
+**The line:** Internal = free. External = ask. When in doubt, draft and show — don't send.
 
-**Existing automations:**
-{{EXISTING_AUTOMATIONS}}
+---
+
+## Integrations
+
+**Messaging:** {{MESSAGING_PLATFORMS}}
+**Email:** {{EMAIL_ACCESS}}
+**Calendar:** {{CALENDAR_INTEGRATION}}
+**GitHub:** {{GITHUB_ACCESS}}
+**Social:** {{SOCIAL_PLATFORMS}}
+**Daily apps:** {{DAILY_APPS}}
+**APIs:** {{API_SERVICES}}
+**Existing automations:** {{EXISTING_AUTOMATIONS}}
+
+---
 
 ## Goals
 
-**30-day goal:**
+**30-day:**
 {{GOAL_30_DAYS}}
 
-**6-month goal:**
+**6-month:**
 {{GOAL_6_MONTHS}}
 
-**Tasks to automate first:**
-{{AUTOMATE_FIRST}}
-
-**Concerns/notes:**
+**Concerns/constraints:**
 {{CONCERNS}}
 
-**Additional context:**
+---
+
+## Communication Rules
+
+{{COMMUNICATION_RULES}}
+
+**Things to never say:**
+{{AVOID_PHRASES}}
+
+---
+
+## Additional Context
+
 {{ADDITIONAL_CONTEXT}}
 
 ---
 
-_This profile enables your AI to work the way YOU work._
+## Context Log
+
+_(This section grows over time. Add notes here as you learn how this person works — their quirks, preferences, patterns. The best USER.md is one that gets updated after every significant interaction.)_
+
+- First session: {{GENERATION_DATE}}
+
+---
+
+_This file tells you who you're working for. Keep it current. An outdated USER.md is worse than no USER.md._
