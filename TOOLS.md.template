@@ -5,76 +5,98 @@ Skills define _how_ tools work. This file is for _your_ specifics — the stuff 
 ## What Goes Here
 
 Things like:
-
-- Camera names and locations
+- Device names and locations
 - SSH hosts and aliases
 - Preferred voices for TTS
-- Speaker/room names
-- Device nicknames
-- Anything environment-specific
+- Speaker and room names
+- API endpoint specifics
+- Anything environment-specific that isn't in a skill file
 
-## Integrations
+**Rule:** Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
+
+---
+
+## Messaging
 
 {{#if TELEGRAM_ENABLED}}
 ### Telegram
-
-**Bot:** {{TELEGRAM_BOT_NAME}}
-**Chat ID:** {{TELEGRAM_CHAT_ID}}
-**Usage:** Primary messaging interface
+- **Bot name:** {{TELEGRAM_BOT_NAME}}
+- **Chat ID:** {{TELEGRAM_CHAT_ID}}
+- **Primary use:** {{MESSAGING_PRIMARY}}
+- **Voice notes:** Transcribe immediately on receipt — never ask {{USER_PREFERRED_NAME}} to type it out
 {{/if}}
 
 {{#if SLACK_ENABLED}}
 ### Slack
-
-**Workspace:** {{SLACK_WORKSPACE}}
-**Channel:** {{SLACK_CHANNEL}}
-**Usage:** {{SLACK_USAGE}}
+- **Workspace:** {{SLACK_WORKSPACE}}
+- **Primary channel:** {{SLACK_CHANNEL}}
+- **Usage:** {{SLACK_USAGE}}
+- **Formatting rule:** No markdown tables in Slack — use bullet lists
 {{/if}}
 
 {{#if DISCORD_ENABLED}}
 ### Discord
-
-**Server:** {{DISCORD_SERVER}}
-**Channel:** {{DISCORD_CHANNEL}}
-**Usage:** {{DISCORD_USAGE}}
+- **Server:** {{DISCORD_SERVER}}
+- **Primary channel:** {{DISCORD_CHANNEL}}
+- **Usage:** {{DISCORD_USAGE}}
+- **Formatting rules:**
+  - No markdown tables — use bullet lists
+  - Wrap multiple links in `<>` to suppress embeds
+  - No headers — use **bold** for emphasis
 {{/if}}
+
+---
+
+## Email
 
 {{#if EMAIL_ENABLED}}
-### Email
-
-**Access:** {{EMAIL_ACCESS_TYPE}}
-**Primary account:** {{EMAIL_PRIMARY}}
-**Usage:** {{EMAIL_USAGE}}
+- **Service:** {{EMAIL_ACCESS_TYPE}}
+- **Primary account:** {{EMAIL_PRIMARY}}
+- **Usage:** {{EMAIL_USAGE}}
+- **Rule:** Draft and stage only — never send without explicit approval
 {{/if}}
+
+---
+
+## Calendar
 
 {{#if CALENDAR_ENABLED}}
-### Calendar
-
-**Service:** {{CALENDAR_SERVICE}}
-**Primary calendar:** {{CALENDAR_PRIMARY}}
-**Usage:** {{CALENDAR_USAGE}}
+- **Service:** {{CALENDAR_SERVICE}}
+- **Primary calendar:** {{CALENDAR_PRIMARY}}
+- **Usage:** {{CALENDAR_USAGE}}
 {{/if}}
+
+---
+
+## GitHub
 
 {{#if GITHUB_ENABLED}}
-### GitHub
-
-**Username:** {{GITHUB_USERNAME}}
-**Primary repos:** {{GITHUB_REPOS}}
-**Usage:** {{GITHUB_USAGE}}
+- **Username:** {{GITHUB_USERNAME}}
+- **Primary repos:** {{GITHUB_REPOS}}
+- **Usage:** {{GITHUB_USAGE}}
+- **Safety rules:**
+  - Never force-push
+  - Never delete branches
+  - Never commit env variables
+  - Always backup config files before editing
 {{/if}}
 
-## Skills Installed
-
-{{SKILLS_LIST}}
+---
 
 ## API Keys
 
 {{#if API_KEYS_CONFIGURED}}
 **Configured services:**
 {{API_KEYS_LIST}}
+
+**Rule:** API keys live in .env files only. Never commit them. Never paste them in chat.
 {{else}}
-No external API keys configured yet. Add them as needed.
+No external API keys configured yet. Add them here as you set them up.
+
+**Rule:** API keys live in .env files only. Never commit them. Never paste them in chat.
 {{/if}}
+
+---
 
 ## Custom Scripts
 
@@ -83,15 +105,69 @@ Location: `~/.openclaw/workspace/scripts/`
 {{#if CUSTOM_SCRIPTS}}
 {{CUSTOM_SCRIPTS_LIST}}
 {{else}}
-No custom scripts yet. Add them here as you build workflows.
+No custom scripts yet. Add entries here as you build workflows.
+
+**Template:**
+```
+### script-name.py
+- **What:** One line description
+- **Usage:** `python3 scripts/script-name.py [args]`
+- **When to use:** Specific trigger or use case
+- **Notes:** Any quirks or requirements
+```
 {{/if}}
 
 ---
 
-## Why Separate?
+## Voice Transcription
 
-Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
+{{#if VOICE_TRANSCRIPTION_NEEDED}}
+- **Tool:** Local Whisper via `scripts/transcribe-voice.py`
+- **Formats:** .ogg, .mp3, .wav, .m4a
+- **Usage:** `python3 scripts/transcribe-voice.py /path/to/audio.ogg`
+- **Rule:** Transcribe immediately on receipt. Never ask {{USER_PREFERRED_NAME}} to type it out. If transcription fails, acknowledge receipt and handle manually.
+{{/if}}
 
 ---
 
-Add whatever helps you do your job. This is your cheat sheet.
+## Installed Tools
+
+_(Add entries here as tools are installed. Keep status current.)_
+
+**Template:**
+```
+### Tool Name
+- **Version:** x.x.x
+- **What:** One line description
+- **Usage:** How to invoke it
+- **Status:** Ready / Needs config / Disabled
+- **Notes:** Any important context
+```
+
+---
+
+## Platform Formatting Rules
+
+These apply everywhere — get them right:
+
+- **Telegram:** Markdown works, keep it clean
+- **Slack:** No markdown tables, use bullet lists
+- **Discord:** No markdown tables, wrap links in `<>`, no headers
+- **WhatsApp:** No headers, use **bold** or CAPS for emphasis
+- **Email:** Full markdown fine, professional tone
+
+---
+
+## Environment Notes
+
+_(Add anything specific to your machine setup that future sessions need to know.)_
+
+- **Machine:** {{USER_PREFERRED_NAME}}'s local setup
+- **OS:** macOS (default assumption unless noted otherwise)
+- **Working directory:** `~/.openclaw/workspace/`
+- **Scripts directory:** `~/.openclaw/workspace/scripts/`
+- **Memory directory:** `~/.openclaw/workspace/memory/`
+
+---
+
+_This is your cheat sheet. Keep it current. An outdated TOOLS.md causes wasted time re-discovering things that were already figured out._
