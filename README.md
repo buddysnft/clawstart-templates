@@ -85,6 +85,12 @@ All templates use `{{VARIABLE}}` syntax. Common variables:
 
 See `docs/VARIABLES.md` for complete list.
 
+## Documentation
+
+- `docs/VARIABLES.md` - Complete variable reference with examples
+- `docs/SAFETY.md` - Security tiers, API rules, and budget guardrails
+- `docs/PROTOCOLS.md` - Core operating procedures (memory logging, compaction recovery, interview-first method)
+
 ## Contributing
 
 We welcome contributions! If you have:
@@ -93,6 +99,43 @@ We welcome contributions! If you have:
 - New personality archetypes
 - Integration guides
 - Security improvements
+
+Please open a PR or issue.
+
+### Contribution to OpenClaw
+
+These templates were created for the ClawStart service but are being open-sourced to help the OpenClaw community. We encourage upstream contribution of useful patterns to the OpenClaw project itself.
+
+## License
+
+MIT License - see `LICENSE` file
+
+You're free to:
+- Use these templates commercially or personally
+- Modify them however you want
+- Distribute them
+- Build services on top of them
+
+## Support
+
+- **Issues/Questions:** Open a GitHub issue
+- **Security concerns:** See OpenClaw security docs first: https://docs.openclaw.ai/gateway/security
+- **ClawStart service:** https://clawstart.net (paid implementation/support)
+
+## Credits
+
+Created by ClawStart to solve the OpenClaw onboarding problem. Inspired by the OpenClaw community.
+
+## Related Links
+
+- OpenClaw: https://openclaw.com
+- OpenClaw Docs: https://docs.openclaw.ai
+- OpenClaw Security: https://docs.openclaw.ai/gateway/security
+- ClawStart Service: https://clawstart.net
+
+---
+
+**Not affiliated with or endorsed by OpenClaw. These are community-created templates.**- Security improvements
 
 Please open a PR or issue.
 
